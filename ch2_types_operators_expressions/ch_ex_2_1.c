@@ -14,6 +14,7 @@
 //it rolls over since everything is modulo 2^n
 
 int main() {
+    int enable_long_running = 0;
     char delim[] = "***************\n";
     unsigned char us_prev_char = 0;
     unsigned char us_next_char = us_prev_char - 1;
@@ -27,12 +28,27 @@ int main() {
     signed short s_prev_short = 0;
     signed short s_next_short = us_prev_short - 1;
 
+    unsigned int us_prev_int = 0;
+    unsigned int us_next_int = us_prev_int - 1;
+
+    signed int s_prev_int = 0;
+    signed int s_next_int = us_prev_int - 1;
+
+    unsigned long us_prev_long = 0;
+    unsigned long us_next_long = us_prev_long - 1;
+    unsigned long max_computed_unsigned_long = 0;
+
+    signed long s_prev_long = 0;
+    signed long s_next_long = us_prev_long - 1;
+    signed long min_computed_signed_long = 0;
+    signed long max_computed_signed_long = 0;
+
     //char
     printf("unsigned char -->\n");
     while(us_next_char < us_prev_char) {
         us_prev_char = us_next_char--;
     }
-    printf("\tminimum unsigned char = %d\n", us_prev_char);
+    printf("\tminimum unsigned char = %u\n", us_prev_char);
     us_prev_char = 0;
     us_next_char = us_prev_char + 1;
     while(us_next_char > us_prev_char)
@@ -83,5 +99,74 @@ int main() {
     printf("USHRT_MAX = %d\nSHRT_MIN = %d\nSHRT_MAX = %d\n", USHRT_MAX, SHRT_MIN, SHRT_MAX);
     printf("%s", delim);
 
+    //int
+    if(enable_long_running) {
+        printf("unsinged int-->\n");
+        us_prev_int = 0;
+        us_next_int = us_prev_int - 1;
+        while(us_next_int < us_prev_int)
+            us_prev_int = us_next_int--;
+        printf("\tminimum unsigned int = %u\n", us_prev_int);
 
+        us_prev_int = 0;
+        us_next_int = us_prev_int + 1;
+        while(us_next_int > us_prev_int)
+            us_prev_int = us_next_int++;
+        printf("\tmaximum unsigned int = %u\n", us_prev_int);
+
+        printf("signed int -->\n");
+        s_prev_int = 0;
+        s_next_int = s_prev_int - 1;
+        while(s_next_int < s_prev_int)
+            s_prev_int = s_next_int--;
+        printf("\tminimum signed int = %d\n", s_prev_int);
+
+        s_prev_int = 0;
+        s_next_int = s_prev_int + 1;
+        while(s_next_int > s_prev_int)
+            s_prev_int = s_next_int++;
+        printf("\tmaximum signed int = %d\n", s_prev_int);
+    }
+
+    printf("UINT_MAX = %u\nINT_MIN = %d\nINT_MAX = %d\n", UINT_MAX, INT_MIN, INT_MAX);
+    printf("%s", delim);
+
+    if(enable_long_running) {
+        //long
+        printf("unsigned long-->\n");
+        us_prev_long = 0;
+        us_next_long = us_prev_long - 1;
+        while(us_next_long < us_prev_long)
+            us_prev_long = us_next_long--;
+        printf("\tminimum unsigned long = %lu\n", us_prev_long);
+
+        us_prev_long = 0;
+        us_next_long = us_prev_long + 1;
+        while(us_next_long > us_prev_long)
+            us_prev_long = us_next_long++;
+        printf("\tmaximum unsigned long = %lu\n", us_prev_long);
+
+        printf("signed long -->\n");
+        s_prev_long = 0;
+        s_next_long = s_prev_long - 1;
+        while(s_next_long < s_prev_long)
+            s_prev_long = s_next_long--;
+        printf("\tminimum signed long = %ld\n", s_prev_long);
+        s_prev_long = 0;
+        s_next_long = s_prev_long + 1;
+        while(s_next_long > s_prev_long)
+            s_prev_long = s_next_long++;
+        printf("\tmaximum signed long = %ld\n", s_prev_long);
+    }
+    max_computed_unsigned_long = ~(0ul);
+    printf("max computed unsigned long = %lu\n", max_computed_unsigned_long);
+    min_computed_signed_long = (1LL << ((8 *(sizeof(long)))-1));
+    printf("min computed signed long = %ld\n", min_computed_signed_long);
+    max_computed_signed_long = ~min_computed_signed_long;
+    printf("max computed signed long = %ld\n", max_computed_signed_long);
+
+    printf("ULONG_MAX = %lu\nLONG_MIN = %ld\nLONG_MAX = %ld\n", ULONG_MAX, LONG_MIN, LONG_MAX);
+    printf("%s", delim);
+
+    printf("FLT_MIN=%f\nFLT_MAX=%f\n", FLT_MIN, FLT_MAX);
 }
