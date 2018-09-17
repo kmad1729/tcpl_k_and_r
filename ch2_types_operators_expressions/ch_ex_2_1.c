@@ -15,38 +15,73 @@
 
 int main() {
     char delim[] = "***************\n";
-    unsigned char us_prev = 0;
-    unsigned char us_next = us_prev - 1;
+    unsigned char us_prev_char = 0;
+    unsigned char us_next_char = us_prev_char - 1;
 
-    signed char s_prev = 0;
-    signed char s_next = us_prev - 1;
+    signed char s_prev_char = 0;
+    signed char s_next_char = us_prev_char - 1;
+
+    unsigned short us_prev_short = 0;
+    unsigned short us_next_short = us_prev_short - 1;
+
+    signed short s_prev_short = 0;
+    signed short s_next_short = us_prev_short - 1;
 
     //char
     printf("unsigned char -->\n");
-    while(us_next < us_prev) {
-        us_prev = us_next--;
+    while(us_next_char < us_prev_char) {
+        us_prev_char = us_next_char--;
     }
-    printf("minimum unsigned char = %d\n", us_prev);
-    us_prev = 0;
-    us_next = us_prev + 1;
-    while(us_next > us_prev)
-        us_prev = us_next++;
-    printf("maximum unsigned char = %d\n", us_prev);
+    printf("\tminimum unsigned char = %d\n", us_prev_char);
+    us_prev_char = 0;
+    us_next_char = us_prev_char + 1;
+    while(us_next_char > us_prev_char)
+        us_prev_char = us_next_char++;
+    printf("\tmaximum unsigned char = %d\n", us_prev_char);
 
     printf("signed char -->\n");
-    while(s_next < s_prev) {
-        s_prev = s_next--;
+    while(s_next_char < s_prev_char) {
+        s_prev_char = s_next_char--;
     }
-    printf("minimum signed char = %d\n", s_prev);
-    s_prev = 0;
-    s_next = s_prev + 1;
-    while(s_next > s_prev)
-        s_prev = s_next++;
-    printf("maximum signed char = %d\n", s_prev);
+    printf("\tminimum signed char = %d\n", s_prev_char);
+    s_prev_char = 0;
+    s_next_char = s_prev_char + 1;
+    while(s_next_char > s_prev_char)
+        s_prev_char = s_next_char++;
+    printf("\tmaximum signed char = %d\n", s_prev_char);
 
     //from limits.h
     printf("UCHAR_MAX = %d\n", UCHAR_MAX);
     printf("CHAR_MIN = %d\nCHAR_MAX = %d\n", CHAR_MIN, CHAR_MAX);
 
     printf("%s", delim);
+
+    //short : `short` is shorthand for `short int`
+    printf("unsigned short -->\n");
+    while(us_next_short < us_prev_short)
+        us_prev_short = us_next_short--;
+    printf("\tminumum unsigned short = %d\n", us_prev_short);
+
+    us_prev_short = 0;
+    us_next_short = us_prev_short + 1;
+    while(us_next_short > us_prev_short)
+        us_prev_short = us_next_short++;
+    printf("\tmaximum unsigned short = %d\n", us_prev_short);
+
+    printf("signed short -->\n");
+    s_prev_short = 0;
+    s_next_short = s_prev_short - 1;
+    while(s_next_short < s_prev_short)
+        s_prev_short = s_next_short--;
+    printf("\tminimum signed short = %d\n", s_prev_short);
+
+    s_prev_short = 0;
+    s_next_short = s_prev_short + 1;
+    while(s_next_short > s_prev_short)
+        s_prev_short = s_next_short++;
+    printf("\tmaximum signed short = %d\n", s_prev_short);
+    printf("USHRT_MAX = %d\nSHRT_MIN = %d\nSHRT_MAX = %d\n", USHRT_MAX, SHRT_MIN, SHRT_MAX);
+    printf("%s", delim);
+
+
 }
