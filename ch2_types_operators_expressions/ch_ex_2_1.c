@@ -160,7 +160,7 @@ int main() {
     }
     max_computed_unsigned_long = ~(0ul);
     printf("max computed unsigned long = %lu\n", max_computed_unsigned_long);
-    min_computed_signed_long = (1LL << ((8 *(sizeof(long)))-1));
+    min_computed_signed_long = (1L << ((8 *(sizeof(long)))-1));
     printf("min computed signed long = %ld\n", min_computed_signed_long);
     max_computed_signed_long = ~min_computed_signed_long;
     printf("max computed signed long = %ld\n", max_computed_signed_long);
